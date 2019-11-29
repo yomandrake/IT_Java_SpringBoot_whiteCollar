@@ -14,7 +14,7 @@ public class Picture {
 	private String pictureName;
 	private String pictureAuthor;
 	private float picturePrice;
-	private LocalDate pictureEntryDate;
+	private String pictureEntryDate;
 	
 	@ManyToOne
 	private Shop shop;//Foreign key
@@ -28,7 +28,8 @@ public class Picture {
 		this.pictureName = pictureName;
 		this.pictureAuthor = pictureAuthor;
 		this.picturePrice = picturePrice;
-		this.pictureEntryDate = LocalDate.now();//Autocomplete
+		LocalDate entryDate = LocalDate.now();
+		this.pictureEntryDate = entryDate.toString();//Autocomplete
 		this.shop = new Shop ("",0);
 		
 	}
@@ -64,12 +65,12 @@ public class Picture {
 	}
 
 
-	public LocalDate getPictureEntryDate() {
+	public String getPictureEntryDate() {
 		return pictureEntryDate;
 	}
 
 
-	public void setPictureEntryDate(LocalDate pictureEntryDate) {
+	public void setPictureEntryDate(String pictureEntryDate) {
 		this.pictureEntryDate = pictureEntryDate;
 	}
 

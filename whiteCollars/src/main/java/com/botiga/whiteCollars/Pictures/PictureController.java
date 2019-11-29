@@ -33,16 +33,23 @@ public class PictureController {
 	//POST PICTURE WITH SHOP ID
 	@RequestMapping(method=RequestMethod.POST, value = "/shops/{shopId}/pictures")
 	public void addPicture(@PathVariable String shopId,@RequestBody Picture picture){
+		
+		Picture newPicture = new Picture(picture.getPictureName(),picture.getPictureAuthor(),picture.getPicturePrice());
+		
 		Shop shop = new Shop(shopId,0);///El maxCollars luego lo resolvera solo
-		picture.setShop(shop);
-		pictureService.addPicture(picture);
+		newPicture.setShop(shop);
+		//newPicture.setPictureEntryDate("Hola!!");
+		pictureService.updatePicture(newPicture);
 	}
 	//PUT or UPDATE PICTURE WITH PICTURE ID
 	@RequestMapping(method=RequestMethod.PUT,value = "/shops/{shopId}/pictures/{id}")
 	public void updatePicture(@PathVariable String shopId,@PathVariable String id, @RequestBody Picture picture){
+		Picture newPicture = new Picture(picture.getPictureName(),picture.getPictureAuthor(),picture.getPicturePrice());
 		Shop shop = new Shop(shopId,0);///El maxCollars luego lo resolvera solo
-		picture.setShop(shop);
-		pictureService.updatePicture(picture);
+		newPicture.setShop(shop);
+		newPicture.setPictureEntryDate("Hola!!");
+		pictureService.updatePicture(newPicture);
+		
 	}
 	//DELETE PICTURE WITH PICTURE ID
 	@RequestMapping(method=RequestMethod.DELETE,value = "/shops/{shopId}/pictures/{id}")
