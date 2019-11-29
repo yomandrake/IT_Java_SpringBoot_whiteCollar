@@ -1,7 +1,6 @@
 package com.botiga.whiteCollars.shops;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +21,6 @@ public class ShopService {
 	public ShopService() {
 		
 	}
-
-	
 
 	///GET ALL
 	public List<Shop> getAllShops() {
