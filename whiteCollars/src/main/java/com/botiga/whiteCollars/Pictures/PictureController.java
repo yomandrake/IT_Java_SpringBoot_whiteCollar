@@ -57,7 +57,11 @@ public class PictureController {
 	public void deletePicture(@PathVariable String id) {
 		pictureService.deletePicture(id);
 	}
-	
+	//DELETE ALL PICTURE WITH SHOP ID
+	@RequestMapping(method=RequestMethod.DELETE,value = "/shops/{shopId}/pictures")
+	public void deleteAllPicturesByShopId(@PathVariable String shopId) {
+		pictureService.deleteAllPicturesByShopId(shopId);
+	}
 	
 
 }

@@ -59,6 +59,12 @@ public class PictureService {
 		}
 		
 	}
+
+	public void deleteAllPicturesByShopId(String shopId) {
+		pictureRepository.findByShopShopName(shopId).forEach(pict -> deletePicture(pict.getPictureName()));	
+		
+		
+	}
 	
 	
 	
