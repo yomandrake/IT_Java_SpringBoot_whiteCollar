@@ -16,6 +16,7 @@ public class ShopController {
 	@Autowired
 	private ShopService myShopService;
 	
+	
 	//GET BY ID
 	@RequestMapping(method=RequestMethod.GET,value = "/shops/{id}")
 	public Optional<Shop> getShopById(@PathVariable String id) {

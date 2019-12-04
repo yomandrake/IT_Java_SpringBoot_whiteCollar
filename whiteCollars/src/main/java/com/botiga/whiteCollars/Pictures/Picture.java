@@ -22,7 +22,7 @@ public class Picture {
 	public Picture() {
 		
 	}
-	
+/*
 	public Picture(String pictureName, String pictureAuthor, float picturePrice) {
 		super();
 		this.pictureName = pictureName;
@@ -33,7 +33,7 @@ public class Picture {
 		this.shop = new Shop ("",0);
 		
 	}
-
+*/
 
 	public String getPictureName() {
 		return pictureName;
@@ -70,8 +70,8 @@ public class Picture {
 	}
 
 
-	public void setPictureEntryDate(String pictureEntryDate) {
-		this.pictureEntryDate = pictureEntryDate;
+	public void setPictureEntryDate() {
+		this.pictureEntryDate = LocalDate.now().toString();
 	}
 
 	public Shop getShop() {

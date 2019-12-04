@@ -7,17 +7,16 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.botiga.whiteCollars.shops.ShopService;
+
 @Service
 public class PictureService {
 	
 	@Autowired
 	private PictureRepository pictureRepository;
-	/*
-	private List<Shop> myShops = new ArrayList<>(Arrays.asList( 
-		new Shop("Name1",1),
-		new Shop("Name2",2))
-	);
-	*/
+	@Autowired
+	private ShopService shopService;
+	
 	public PictureService() {
 		
 	}
@@ -29,11 +28,11 @@ public class PictureService {
 		return allPictures;
 	}
 	
-	//POST -ADD NEW
+	//POST 
 	public void addPicture(Picture picture) {
 		pictureRepository.save(picture);
 	}
-	//PUT or UPDATE shop
+	//PUT or UPDATE picture
 	public void updatePicture(Picture shop) {
 		pictureRepository.save(shop);
 	}
@@ -47,7 +46,19 @@ public class PictureService {
 		return requestedPicture;
 	}
 	
-	
+	//CHECK ROOM FOR NEW PICTURES
+	public boolean isRoomForMorePict(String shopId) {
+		//Check if we reached capacity
+		int maxQ = shopService.getShopById(shopId).get().getMaxCollars();
+		int pictStockQ = this.getAllPictures(shopId).size();
+		
+		if(pictStockQ < maxQ) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	
 	
 	
